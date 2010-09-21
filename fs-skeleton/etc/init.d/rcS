@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Make system read-write on the first boot so SSH can generate keys
+if [ -f /etc/rescue.firstboot ]; then
+  mount -o remount,rw /
+fi
+
+# Start all init scripts in /etc/init.d
+# executing them in numerical order.
+#
+for i in /etc/init.d/S??* ;do
+
+     # Ignore dangling symlinks (if any).
+     [ ! -f "$i" ] && continue
+
+     case "$i" in
+	*.sh)
+	    # Source shell script for speed.
+	    (
+		trap - INT QUIT TSTP
+		set start
+		. $i
+	    )
+	    ;;
+	*)
+	    # No sh extension, so fork subprocess.
+	    $i start
+	    ;;
+    esac
+done
+
+# Remove firstboot flag and make system read-only
+if [ -f /etc/rescue.firstboot ]; then
+  rm /etc/rescue.firstboot
+  mount -o remount,ro /
+fi
+

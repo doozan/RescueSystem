@@ -1,0 +1,3 @@
+# ~/.profile
+
+ENV=$HOME/.bashrc

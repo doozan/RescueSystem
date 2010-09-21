@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/usr/sbin/ntpd -q -p pool.ntp.org

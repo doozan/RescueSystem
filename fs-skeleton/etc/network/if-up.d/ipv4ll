@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if [ x${IF_ZCIP_PREF} != x ]
+then
+        /sbin/zcip -q -r ${IF_ZCIP_PREF} ${IFACE} /sbin/zcip.script
+fi
