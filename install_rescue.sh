@@ -221,7 +221,7 @@ rm /tmp/uboot-mtd0-dump
 UBOOT_IS_CURRENT=$(grep $CURRENT_UBOOT_MD5 /tmp/valid-uboot.md5 | grep current)
 rm /tmp/valid-uboot.md5
 
-if [ "$UBOOT_DETAILS" == "" ]; then
+if [ "$UBOOT_DETAILS" = "" ]; then
   echo "##"
   echo "## uBoot is not up-to-date"
   echo "## Please install the newest uBoot and then re-run this installer."
