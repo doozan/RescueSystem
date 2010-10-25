@@ -227,7 +227,7 @@ if [ "$UBOOT_DETAILS" == "" ]; then
   echo "## Please install the newest uBoot and then re-run this installer."
   echo "##"
   exit 1
-else
+fi
 
 echo "## uBoot is good"
 echo ""
