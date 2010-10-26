@@ -218,7 +218,7 @@ wget -O "/tmp/valid-uboot.md5" "$VALID_UBOOT_MD5"
 
 CURRENT_UBOOT_MD5=$(md5sum "/tmp/uboot-mtd0-dump" | cut -d' ' -f1)
 rm /tmp/uboot-mtd0-dump
-UBOOT_IS_CURRENT=$(grep $CURRENT_UBOOT_MD5 /tmp/valid-uboot.md5 | grep current)
+UBOOT_DETAILS=$(grep $CURRENT_UBOOT_MD5 /tmp/valid-uboot.md5 | grep current)
 rm /tmp/valid-uboot.md5
 
 if [ "$UBOOT_DETAILS" = "" ]; then
