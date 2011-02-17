@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+
+echo "Firstrun: remounting filesystem read-only"
+
+cat <<END >/tmp/cleanup.sh
+
+rm -f /etc/rcS.d/S60firstrun
+sync
+sleep 1
+mount -o remount,ro /
+
+END
+
+chmod +x /tmp/cleanup.sh
+
+/tmp/cleanup.sh &
+

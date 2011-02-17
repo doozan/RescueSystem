@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# Turn off swap and umount all local file systems.
+#
+
+case "$1" in
+  start)
+	;;
+  stop)
+  	echo "Mounting root filesystem as read-only"
+	mount -n -o remount,ro -t dummytype dummydev / \
+	|| mount -n -o remount,ro           dummydev / \
+	|| mount -n -o remount,ro                    /
+	;;
+  restart|reload)
+	"$0" stop
+	"$0" start
+	;;
+  *)
+	echo $"Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
+

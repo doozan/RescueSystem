@@ -1,3 +1,5 @@
 #!/bin/sh
 
+[ "$IFACE" != "lo" ] || exit 0
+
 /usr/sbin/ntpd -q -p pool.ntp.org

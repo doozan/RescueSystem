@@ -1,6 +1,5 @@
 auto lo
 iface lo inet loopback
 iface eth0 inet dhcp
-  zcip-pref 169.254.9.17
   up echo default-on > /sys/class/leds/dockstar\:green\:health/trigger
   down echo none > /sys/class/leds/dockstar\:green\:health/trigger

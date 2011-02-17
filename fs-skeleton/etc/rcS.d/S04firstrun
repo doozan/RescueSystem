@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+
+echo "Firstrun: remounting filesystem as rw"
+mount -o remount,rw /
+rm -f $0
+
+exit $?
+
